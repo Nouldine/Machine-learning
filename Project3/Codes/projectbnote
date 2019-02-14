@@ -1,0 +1,71 @@
+%%  Read train Data
+Ytrain=TrainData(:,end);  %% labels of training
+
+TraindData(:,end)=[]
+
+%%  Read test Data
+
+Ytest=TesData(:,end); %%  labels of test
+
+TestData(:,end)=[]
+
+N=size(TrainData,1); %%  Number of training points
+
+Data=Normalize(Data);
+
+TrainData=Data(1:N,:);
+
+TestData=Data(N+1,:);
+
+K = 5;
+
+Ytest_predict=myKNN(TrainData,TestData,Ytrain,k)
+
+Calculate_error(Ytest_predict,Ytest)
+
+
+%% Normalize Data
+
+	1. Compute the mean of each column
+	2. Substract the mean from each entry of the column
+	3. Find the std of each column 
+	4. Divide each entry of the column by its std
+
+%%
+
+Ytest_predict=myKNN(TrainData, TestData, Ytrain, k );
+
+	1. Compute distance fom test to train.
+		Dist=Pdist2(TestData, TrainData)
+	2. For each row (each test point )
+
+		a. Sort the ith row, in ascending order [v ind]=Sort(Dist(i,; )); 
+
+		b. Pick top k and find their majority label
+
+	Ytest_predict(i)=mode(Ytrain(ind(1:k)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
